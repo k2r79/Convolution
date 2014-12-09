@@ -1,0 +1,23 @@
+{
+  "name": "Convolution",
+  "version": "0.0.1",
+  "description": "Convolution algorithm implementation",
+  "main": "src/convolution.js",
+  "keywords": [
+    "convolution"
+  ],
+  "authors": [
+    "Vincent Kelleher"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine": "~2.1.3"
+  }
+}
