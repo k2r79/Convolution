@@ -2,12 +2,34 @@
  * Convolution test class
  */
 
+
 describe("Convolution network", function() {
     beforeEach(function() {
         this.convolution = new Convolution();
     });
 
-    it("processes a matrix", function() {
+    it("raises an exception when the convolution matrix isn't square", function() {
+        var convolutionMatrix = [
+            [ 1, 0, 1, 1 ],
+            [ 0, 2, 0, 2 ],
+            [ 1, 0, 1, 3 ]
+        ];
+
+        expect(this.convolution.setConvolutionMatrix.bind(this.convolution, convolutionMatrix)).toThrowError(ConvolutionMatrixNotSquareException);
+    });
+
+    it("raises an exception when the convolution matrix's length is not odd", function() {
+        var convolutionMatrix = [
+            [ 1, 0, 1, 1 ],
+            [ 0, 2, 0, 2 ],
+            [ 1, 0, 1, 3 ],
+            [ 1, 0, 1, 3 ]
+        ];
+
+        expect(this.convolution.setConvolutionMatrix.bind(this.convolution, convolutionMatrix)).toThrowError(ConvolutionMatrixLengthEvenException);
+    });
+
+    it("processes a matrix with a 3x3 convolution matrix", function() {
         var inputMatrix = [
             [ 2, 1, 0, 2, 0, 1 ],
             [ 0, 1, 2, 2, 1, 1 ],
@@ -36,5 +58,5 @@ describe("Convolution network", function() {
         var outputMatrix = this.convolution.compute();
 
         expect(outputMatrix).toEqual(expectedOutputMatrix);
-    })
+    });
 });
